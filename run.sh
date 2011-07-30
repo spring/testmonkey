@@ -15,14 +15,12 @@ if [ ! -x "$1" ]; then
 fi
 
 TMP=tmp
-BT=$TMP/$DATESTR.btfull
 LOG=$TMP/$DATESTR.log
 
 GDBCMDS=$TMP/$DATESTR.gdbcmds
 
 (
 echo file $1
-echo set logging on $BT
 echo run $2 $3 $4 $5 $6 $7 $8 $9
 echo bt full
 echo quit
@@ -30,4 +28,10 @@ echo quit
 
 echo Starting Test, logging to $LOG
 gdb -x $GDBCMDS >$LOG 2>&1
+
+if grep -v "Program exited normally." $LOG; then
+	echo -n "failed"
+else
+	echo -n "ok"
+fi
 

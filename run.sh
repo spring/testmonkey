@@ -14,11 +14,11 @@ if [ ! -x "$1" ]; then
 	exit 1
 fi
 
-TMP=tmp
-LOG=$TMP/$DATESTR.log
-GDBCMDS=$TMP/.$DATESTR.gdbcmds
+LOGDIR=logs
+LOG=$LOGDIR/$DATESTR.log
+GDBCMDS=$LOGDIR/.$DATESTR.gdbcmds
 
-mkdir -p $TMP
+mkdir -p $LOGDIR
 
 (
 echo file $1

@@ -1,7 +1,5 @@
 [GAME]
 {
-	HostIP=0.0.0.0;
-	HostPort=8452;
 	IsHost=1;
 	MyPlayerName=TestMonkey;
 

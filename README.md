@@ -8,5 +8,5 @@ to set it up, you need to add the test.lua widget:
 
 to run a test, type:
 
-	while ./run.sh ~/local/spring/master/bin/spring -x 800 -y 600 ~/Projects/autotest/testKAIKvsKAIK.txt ;do echo -n; done
+	while ./run.sh ~/local/spring/master/bin/spring -x 800 -y 600 -m ~/Projects/autotest/testKAIKvsKAIK.txt ;do echo -n; done
 logfiles will be created in tmp/

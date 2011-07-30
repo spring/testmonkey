@@ -27,7 +27,7 @@ echo quit
 )>$GDBCMDS
 
 echo Starting Test, logging to $LOG
-gdb -x $GDBCMDS >$LOG 2>&1
+time gdb -x $GDBCMDS >$LOG 2>&1 2>/dev/null
 
 if grep -v "Program exited normally." $LOG; then
 	echo -n "failed"

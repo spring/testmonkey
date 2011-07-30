@@ -28,7 +28,7 @@ function widget:GameFrame(n)
 			Spring.SendCommands("speedup")
 		end
 	end
-	if n==27000 then
+	if n==27000 then -- run spring 15 minutes (ingame time)
 		Spring.Echo("Tests run long enough, quitting...")
 		Spring.SendCommands("quit")
 	end

@@ -18,6 +18,8 @@ TMP=tmp
 LOG=$TMP/$DATESTR.log
 GDBCMDS=$TMP/.$DATESTR.gdbcmds
 
+mkdir -p $TMP
+
 (
 echo file $1
 echo set logging on $LOG

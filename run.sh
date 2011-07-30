@@ -16,22 +16,27 @@ fi
 
 TMP=tmp
 LOG=$TMP/$DATESTR.log
-
-GDBCMDS=$TMP/$DATESTR.gdbcmds
+GDBCMDS=$TMP/.$DATESTR.gdbcmds
 
 (
 echo file $1
+echo set logging on $LOG
+echo set logging redirect off
 echo run $2 $3 $4 $5 $6 $7 $8 $9
 echo bt full
 echo quit
 )>$GDBCMDS
 
-echo Starting Test, logging to $LOG
-gdb -x $GDBCMDS >$LOG 2>&1
+echo -n Starting Test, logging to $LOG ...
+gdb -batch-silent -x $GDBCMDS >$LOG 2>&1
 
-if grep -v "Program exited normally." $LOG; then
-	echo -n "failed"
+#cleanup (this info is alread in normal log)
+rm -f $GDBCMDS
+
+if grep -v "Program exited normally." $LOG >/dev/null; then
+	echo ": failed"
+	grep "^#0  " $LOG
 else
-	echo -n "ok"
+	echo ": ok"
 fi
 

@@ -31,6 +31,8 @@ echo quit
 
 #limit to 1GB RAM
 ulimit -v 1000000
+#max 15 min cpu time
+ulimit -t 900
 echo -n Starting Test, logging to $LOG ...
 gdb -batch-silent -x $GDBCMDS >$LOG 2>&1
 

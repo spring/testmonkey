@@ -37,7 +37,7 @@ gdb -batch-silent -x $GDBCMDS >$LOG 2>&1
 #cleanup (this info is alread in normal log)
 rm -f $GDBCMDS
 
-if grep -v "Program exited normally." $LOG >/dev/null; then
+if ! grep "Program exited normally." $LOG >/dev/null; then
 	echo ": failed"
 	grep "^#0  " $LOG
 else
